@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panquecardos: panqueques proteicos, ricos y nutritivos. Nutrición y fuerza en cada bocado.">
+  <title>Panquecardos | Nutrición y fuerza en cada bocado</title>
+  <style>
+    :root {
+      --verde: #174b25;
+      --verde-claro: #286438;
+      --naranja: #f47b12;
+      --crema: #fff8e9;
+      --dorado: #ffd477;
+      --texto: #263326;
+      --blanco: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--texto);
+      background: var(--crema);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .contenedor { width: min(1100px, 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(255,248,233,.96);
+      border-bottom: 1px solid #f0dfbd;
+      box-shadow: 0 2px 12px rgba(23,75,37,.07);
+    }
+    .barra { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .marca img { width: 112px; height: 72px; object-fit: contain; mix-blend-mode: multiply; }
+    .marca span { font-size: 1.55rem; font-weight: 900; letter-spacing: -1px; color: var(--verde); }
+    .marca b { color: var(--naranja); }
+    nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    nav a { text-decoration: none; font-weight: 700; font-size: .95rem; }
+    nav a:hover { color: var(--naranja); }
+    .hero { padding: 58px 0 66px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 35px; }
+    .etiqueta { display: inline-block; padding: 6px 14px; border-radius: 30px; color: var(--verde); background: #e8efd9; font-weight: 700; font-size: .85rem; }
+    h1 { color: var(--verde); font-size: clamp(2.5rem, 5vw, 4.7rem); line-height: 1.04; margin: 18px 0; letter-spacing: -2px; }
+    h1 span { color: var(--naranja); }
+    .subtitulo { color: var(--verde); font-size: clamp(1.25rem, 2.4vw, 1.8rem); font-weight: 800; margin: 0 0 14px; }
+    .hero p { max-width: 550px; font-size: 1.08rem; }
+    .hero-imagen { width: 100%; max-height: 420px; object-fit: cover; border-radius: 48% 48% 22px 22px; box-shadow: 16px 16px 0 var(--dorado); }
+    .boton { display: inline-block; margin-top: 18px; padding: 13px 24px; border-radius: 30px; background: var(--naranja); color: white; text-decoration: none; font-weight: 800; transition: .2s; }
+    .boton:hover { background: var(--verde); transform: translateY(-2px); }
+    section { padding: 65px 0; }
+    .titulo-seccion { text-align: center; color: var(--verde); font-size: clamp(2rem, 4vw, 2.7rem); margin: 0 0 12px; }
+    .intro-seccion { text-align: center; max-width: 720px; margin: 0 auto 35px; }
+    .sobre { background: #fffdf6; }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+    .panel { padding: 28px; border-radius: 22px; background: white; border: 1px solid #f2dfb7; }
+    .panel h3 { color: var(--verde); margin-top: 0; font-size: 1.35rem; }
+    .panel h3 span { color: var(--naranja); }
+    .lista { padding-left: 20px; margin-bottom: 0; }
+    .lista li { margin: 9px 0; }
+    .productos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .producto { background: white; border: 2px solid #f4d28a; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 20px rgba(23,75,37,.06); }
+    .producto img { display: block; width: 100%; height: 220px; object-fit: cover; }
+    .producto-contenido { padding: 20px; }
+    .producto h3 { color: var(--verde); margin: 0 0 8px; }
+    .producto p { margin: 0; }
+    .sin-precio { display: inline-block; margin-top: 14px; color: var(--naranja); font-weight: 800; font-size: .92rem; }
+    .beneficios { background: #fff0cf; }
+    .beneficios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .beneficio { text-align: center; padding: 20px 12px; background: rgba(255,255,255,.72); border-radius: 18px; }
+    .beneficio .icono { font-size: 2rem; }
+    .beneficio h3 { color: var(--verde); font-size: 1rem; margin: 8px 0 4px; }
+    .beneficio p { font-size: .92rem; margin: 0; }
+    .contacto { color: white; background: var(--verde); text-align: center; }
+    .contacto .titulo-seccion { color: white; }
+    .contacto p { max-width: 650px; margin: 0 auto; }
+    .contacto .boton { color: var(--verde); background: #ffb02e; }
+    .contacto .boton:hover { background: white; }
+    footer { background: #103b1c; color: #eaf1e7; text-align: center; padding: 18px; font-size: .9rem; }
+    @media (max-width: 760px) {
+      .barra { padding: 10px 0; flex-direction: column; }
+      nav { justify-content: center; gap: 14px; }
+      .hero-grid, .sobre-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 38px; }
+      .hero-imagen { max-height: 330px; }
+      .productos-grid { grid-template-columns: 1fr; }
+      .producto img { height: 240px; }
+      .beneficios-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 390px) { .marca span { font-size: 1.25rem; } nav { gap: 10px; font-size: .88rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="contenedor barra">
+      <a class="marca" href="#inicio" aria-label="Panquecardos, inicio">
+        <img src="assets/logo-panquecardos.jpg" alt="Logo de Panquecardos">
+        <span>Panque<b>cardos</b></span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Quiénes somos</a>
+        <a href="#productos">Productos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div>
+          <span class="etiqueta">Nutrición y fuerza en cada bocado</span>
+          <h1>¡Come rico,<br><span>vive fuerte!</span></h1>
+          <p class="subtitulo">Panqueques proteicos para disfrutar y cuidarte.</p>
+          <p>Una forma deliciosa de sumar opciones nutritivas a tu día. Descubre sabores pensados para acompañar tu ritmo, tus entrenamientos y tus ganas de sentirte bien.</p>
+          <a class="boton" href="#productos">Conoce nuestros productos ↓</a>
+        </div>
+        <img class="hero-imagen" src="assets/frutos-rojos.jpg" alt="Panqueques dorados acompañados de frutas frescas">
+      </div>
+    </section>
+
+    <section class="sobre" id="nosotros">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">Conoce Panquecardos</h2>
+        <p class="intro-seccion">Creemos que comer saludable también puede ser rico, práctico y divertido.</p>
+        <div class="sobre-grid">
+          <article class="panel">
+            <h3>¿Quiénes <span>somos?</span></h3>
+            <p>Somos Panquecardos, un emprendimiento de panqueques proteicos que busca combinar sabor y nutrición en una alternativa diferente. Queremos que deportistas, estudiantes y todas las personas que desean cuidarse disfruten cada bocado sin dejar de lado el placer de comer algo delicioso.</p>
+          </article>
+          <article class="panel">
+            <h3>¿Qué nos <span>diferencia?</span></h3>
+            <ul class="lista">
+              <li>Unimos el sabor de los panqueques con una propuesta enfocada en la nutrición.</li>
+              <li>Ofrecemos variedades para que puedas elegir la que más te guste.</li>
+              <li>Buscamos utilizar ingredientes nutritivos y cuidar la preparación.</li>
+              <li>Tenemos una propuesta cercana, práctica y pensada para tu día a día.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">Nuestros productos</h2>
+        <p class="intro-seccion">Tres opciones para disfrutar de una pausa rica y nutritiva. ¡Encuentra tu favorita!</p>
+        <div class="productos-grid">
+          <article class="producto">
+            <img src="assets/clasicos.jpg" alt="Panqueques clásicos con fruta">
+            <div class="producto-contenido">
+              <h3>Panqueques clásicos</h3>
+              <p>Una versión del sabor tradicional, ideal para empezar el día o disfrutar una merienda.</p>
+              <span class="sin-precio">Consulta por este producto</span>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="assets/frutos-rojos.jpg" alt="Panqueques con frutos rojos">
+            <div class="producto-contenido">
+              <h3>Panqueques con frutas</h3>
+              <p>Una combinación colorida con frutas frescas para darle un toque especial a cada bocado.</p>
+              <span class="sin-precio">Consulta por este producto</span>
+            </div>
+          </article>
+          <article class="producto">
+            <img src="assets/avena-frutas.jpg" alt="Panqueques de avena con frutas">
+            <div class="producto-contenido">
+              <h3>Panqueques de avena</h3>
+              <p>Una alternativa inspirada en ingredientes nutritivos, perfecta para quienes buscan variedad.</p>
+              <span class="sin-precio">Consulta por este producto</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="beneficios">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">¿Por qué elegirnos?</h2>
+        <p class="intro-seccion">Una propuesta que combina disfrute, practicidad y una mirada hacia una alimentación equilibrada.</p>
+        <div class="beneficios-grid">
+          <article class="beneficio"><div class="icono">💪</div><h3>Enfoque proteico</h3><p>Una opción pensada para complementar tu alimentación.</p></article>
+          <article class="beneficio"><div class="icono">🌿</div><h3>Ingredientes nutritivos</h3><p>Priorizamos ingredientes que aporten variedad y sabor.</p></article>
+          <article class="beneficio"><div class="icono">⚡</div><h3>Para tu ritmo</h3><p>Una alternativa práctica para distintos momentos del día.</p></article>
+          <article class="beneficio"><div class="icono">❤️</div><h3>Sabor y bienestar</h3><p>Disfruta algo rico mientras cuidas tus hábitos.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="contenedor">
+        <h2 class="titulo-seccion">¡Nos encantaría atenderte!</h2>
+        <p>¿Quieres conocer nuestros sabores o realizar un pedido? Escríbenos y descubre Panquecardos. <strong>Nutrición y fuerza en cada bocado.</strong></p>
+        <!-- WhatsApp de Panquecardos: +51 987 906 138 -->
+        <a class="boton" href="https://wa.me/51987906138?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20Panquecardos." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <p style="font-size:.9rem; margin-top:16px;">También puedes encontrarnos en nuestras redes sociales.</p>
+        <!-- Reemplaza # por los enlaces reales de Instagram o TikTok de tu emprendimiento. -->
+        <p><a href="#" style="color:#ffd477; font-weight:bold;">Instagram</a> · <a href="#" style="color:#ffd477; font-weight:bold;">TikTok</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Panquecardos · Nutrición y fuerza en cada bocado.</footer>
+</body>
+</html>
